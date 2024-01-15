@@ -1,0 +1,22 @@
+package com.infuse.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+@EnableAutoConfiguration
+@EnableJpaRepositories("com.infuse.api.repository.*")  //JPA repositories
+@EntityScan("com.infuse.api.model.*")  //JPA entities
+@ComponentScan("com.infuse.api.fixture")
+@SpringBootApplication
+public class ApiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ApiApplication.class, args);
+	}
+
+}
