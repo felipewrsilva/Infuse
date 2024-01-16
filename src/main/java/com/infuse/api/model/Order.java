@@ -1,94 +1,111 @@
 package com.infuse.api.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer orderId;
+	// Fields
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String controlNumber;
+	@Column(name = "control_number", unique = true, nullable = false)
+	private String controlNumber;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registrationDate;
+	@Column(name = "registration_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date registrationDate;
 
-    private String productName;
+	@Column(name = "product_name", nullable = false)
+	private String productName;
 
-    private BigDecimal unitPrice;
+	@Column(name = "unit_price", nullable = false)
+	private BigDecimal unitPrice;
 
-    private Integer quantity;
+	@Column(name = "quantity")
+	private Integer quantity;
 
-    private BigDecimal discountedTotal;
+	@Column(name = "customer_id", nullable = false)
+	private Long customerId;
 
-    private Integer customer;
+	@Column(name = "discount")
+	private BigDecimal discount;
 
-    // Getters and Setters
+	@Column(name = "total")
+	private BigDecimal total;
 
-    public Integer getOrderId() {
-        return orderId;
-    }
+	// Getters
+	public Long getId() {
+		return id;
+	}
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
-    }
+	public String getControlNumber() {
+		return controlNumber;
+	}
 
-    public String getControlNumber() {
-        return controlNumber;
-    }
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
 
-    public void setControlNumber(String controlNumber) {
-        this.controlNumber = controlNumber;
-    }
+	public String getProductName() {
+		return productName;
+	}
 
-    public Date getRegistrationDate() {
-        return registrationDate;
-    }
+	public BigDecimal getUnitPrice() {
+		return unitPrice;
+	}
 
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
-    }
+	public Integer getQuantity() {
+		return quantity;
+	}
 
-    public String getProductName() {
-        return productName;
-    }
+	public Long getCustomerId() {
+		return customerId;
+	}
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+	public BigDecimal getDiscount() {
+		return discount;
+	}
 
-    public BigDecimal getUnitPrice() {
-        return unitPrice;
-    }
+	// Setters
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setUnitPrice(BigDecimal unitPrice) {
-        this.unitPrice = unitPrice;
-    }
+	public void setControlNumber(String controlNumber) {
+		this.controlNumber = controlNumber;
+	}
 
-    public Integer getQuantity() {
-        return quantity;
-    }
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 
-    public BigDecimal getDiscountedTotal() {
-        return discountedTotal;
-    }
+	public void setUnitPrice(BigDecimal unitPrice) {
+		this.unitPrice = unitPrice;
+	}
 
-    public void setDiscountedTotal(BigDecimal discountedTotal) {
-        this.discountedTotal = discountedTotal;
-    }
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
-    public Integer getCustomer() {
-        return customer;
-    }
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
 
-    public void setCustomer(Integer customer) {
-        this.customer = customer;
-    }
+	public void setDiscount(BigDecimal discount) {
+		this.discount = discount;
+	}
+
+	public void setTotalValue(BigDecimal total) {
+		this.total = total;
+	}
+
 }
